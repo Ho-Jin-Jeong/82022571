@@ -1,0 +1,33 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "82022571"
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: "82022571"
+          command: ["java","-jar","/app.jar"]
+          args: ["--spring.config.location=file:/config/application.yml"]
+          volumeMounts:
+          - mountPath: /mnt/cloud-sample
+            name: "82022571-volume"
+            readOnly: false
+            subPath: cloud-sample
+          - mountPath: /config
+            name: application-properties
+            readOnly: true
+                          
+      volumes:
+      - name: "82022571-volume"
+        persistentVolumeClaim:
+          claimName: "82022571-pvc"
+      - name: application-properties
+        configMap:
+          name: "82022571-configmap"
+          items:
+            - key: application.yml
+              path: application.yml
+          defaultMode: 420
+#
