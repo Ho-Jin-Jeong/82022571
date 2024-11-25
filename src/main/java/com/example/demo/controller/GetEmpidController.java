@@ -25,12 +25,12 @@ public class GetEmpidController {
         String empId = "";
 
         try {  // 정규식을 이용해 숫자 토큰 추출
-            Pattern pattern = Pattern.compile("app-(\\d+)\\.ce[a-z]+-aa\\.kubepia\\.net");
+            Pattern pattern = Pattern.compile("(\\d+)\\.ce[a-z]+-aa\\.kubepia\\.net");
             Matcher matcher = pattern.matcher(uriStr);
             if (matcher.find()) {
                 empId = matcher.group(1);
             } else {
-                empId ="No empId in the URL.";
+                empId ="No empId in the URL. could be localhost";
             }
         } catch (Exception e) {
             e.printStackTrace();
