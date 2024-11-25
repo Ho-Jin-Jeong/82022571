@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 @Slf4j
 @RequestMapping("/api/v1")
 @RestController
-public class GetEmpidController {
+public class EmpController {
     @GetMapping("/user")
     public ResponseEntity<String> getUserInfo(RequestEntity<String> requestEntity) {
         // RequestEntity에서 URI 가져오기
